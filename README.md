@@ -69,19 +69,19 @@ class Composing{
 ```
 *其中(static)counter为类型Composing的**共享**成员变量，*
 *final则决定每个Composing对象id不能改变。*
-> //output
-Creating Shared 0
-Creating Composing 0
-Creating Composing 1
-Creating Composing 2
-Creating Composing 3
-Creating Composing 4
-Disposing Composing 0
-Disposing Composing 1
-Disposing Composing 2
-Disposing Composing 3
-Disposing Composing 4
-Disposing Shared 0
+> //output  
+Creating Shared 0  
+Creating Composing 0  
+Creating Composing 1  
+Creating Composing 2  
+Creating Composing 3  
+Creating Composing 4  
+Disposing Composing 0  
+Disposing Composing 1  
+Disposing Composing 2  
+Disposing Composing 3  
+Disposing Composing 4  
+Disposing Shared 0  
 
 
 
