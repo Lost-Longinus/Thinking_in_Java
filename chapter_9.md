@@ -3,9 +3,6 @@
 >策略模式(示例)
 ```sh 
 import java.util.Arrays;
-/**
- * Created by Pengfei Jin on 2018/9/24.
- */
 public class Strategy_pattern {
 	public static void process(Strategy_pattern.Processor p, Object s){
 		System.out.println("Using Processor "+p.name()); 
@@ -53,6 +50,66 @@ class Splitter extends Strategy_pattern.Processor {
   [Disagreement, with, briefs, is, by, definition, incorrect]  
 
 >适配器模式  
+```sh 
+public class Adapter {
+	public static void process(Processors p, Object s){
+		System.out.println("Using Processor "+p.name());
+		System.out.println(p.process(s));
+	}
+	public static void main(String[] args) {
+		Waveform waveform = new Waveform();
+		Adapter.process(new FilterAdapter(new LowPass(1.0)),waveform);
+		//FilterAdapter构造器接收具有接口Filter的Waveform,并产生所需要的Processors对象
+	}
+}
+interface Processors{
+	String  name();
+	Object process(Object input);
+}
+class Filter{
+	public String  name(){
+		return getClass().getSimpleName();
+	}
+	public Waveform process(Waveform input){
+		return input;
+	}
+}
+class Waveform{
+	private static long counter;
+	private final long id = counter++;
+	@Override
+	public String toString() {
+		return "Waveform "+id;
+	}
+}
+class LowPass extends Filter{
+	double cutoff;
+	public LowPass(double cutoff){
+		this.cutoff = cutoff;
+	}
+	public  Waveform process(Waveform input){
+		return input;
+	}
+}
+class FilterAdapter implements Processors{
+	Filter filter;
+	public FilterAdapter(Filter filter){
+		this.filter = filter;
+	}
+	@Override
+	public String  name() {
+		return filter.name();
+	}
+
+	@Override
+	public Object process(Object input) {
+		return filter.process((Waveform) input);
+	}
+}
+```  
+> //output  
+Using Processor LowPass  
+Waveform 0
 * implements多个接口的实现类，可以向上转型为其中任意一个接口  
 * 接口和抽象类创建场合 
 
@@ -62,3 +119,41 @@ class Splitter extends Strategy_pattern.Processor {
 | 抽象类-abstract | 除抽象方法外，带有具体方法定义，或有成员变量 |
 ***Interface可以继承Interface!!***
 >工厂模式 
+```sh 
+public class Factories {
+	public static void serviceConsumer(ServiceFactory factory){
+		Service service = factory.getService();
+		service.method01();
+		service.method02();
+	}
+	public static void main(String[] args) {
+		serviceConsumer(new ServiceFactoryImpl());
+	}
+}
+interface Service{
+	void method01();
+	void method02();
+}
+interface ServiceFactory{
+	Service getService();
+}
+class ServiceImpl implements Service{
+	@Override
+	public void method01() {
+		System.out.println(getClass().getSimpleName()+" "+getClass().getMethods()[1].getName());
+	}
+	@Override
+	public void method02() {
+		System.out.println(getClass().getSimpleName()+" "+getClass().getMethods()[0].getName());
+	}
+}
+class ServiceFactoryImpl implements ServiceFactory{
+	@Override
+	public Service getService() {
+		return new ServiceImpl();
+	}
+}
+```  
+> //output  
+  ServiceImpl method01  
+  ServiceImpl method02 
