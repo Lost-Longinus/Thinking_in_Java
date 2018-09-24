@@ -78,4 +78,14 @@ Disposing Composing 1
 Disposing Composing 2  
 Disposing Composing 3  
 Disposing Composing 4  
-Disposing Shared 0  
+Disposing Shared 0   
+* is-a;has-a;is-like-a 梳理  
+
+| 缩写 | 含义 |
+| :---: | :---: |
+| is-a | 继承基类，且无新拓展方法 |
+| is-like-a | 继承基类，有新拓展方法 |
+| has-a | 实现了接口 |
+* 协变返回类型
+在导出类中的覆盖方法，可以返回基类方法的返回类型的某种导出类型，
+即向上转型。
