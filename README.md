@@ -6,5 +6,5 @@
 Polymorphism 多态    
 [Chapter 9](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_9.md)    
 Interface 接口  
-[Chapter 10](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_10.md)   
+[Chapter 10](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter10.md)   
 Internal class 内部类  
