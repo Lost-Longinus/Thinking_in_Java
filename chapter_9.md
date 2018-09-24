@@ -44,6 +44,13 @@ class Splitter extends Strategy_pattern.Processor {
 }
 ```
 ***其中process方法，即为应用不同Processor策略作用于String上。***  
+> //output  
+  Using Processor Upcase  
+  DISAGREEMENT WITH BRIEFS IS BY DEFINITION INCORRECT  
+  Using Processor Downcase  
+  disagreement with briefs is by definition incorrect  
+  Using Processor Splitter  
+  [Disagreement, with, briefs, is, by, definition, incorrect]  
 
 >适配器模式  
 * implements多个接口的实现类，可以向上转型为其中任意一个接口  
@@ -53,3 +60,5 @@ class Splitter extends Strategy_pattern.Processor {
 | :---: | :---: |
 | 接口-interface | 不带任何方法定义和成员变量 |
 | 抽象类-abstract | 除抽象方法外，带有具体方法定义，或有成员变量 |
+***Interface可以继承Interface!!***
+>工厂模式 
