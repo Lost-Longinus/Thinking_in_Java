@@ -156,4 +156,5 @@ class ServiceFactoryImpl implements ServiceFactory{
 ```  
 > //output  
   ServiceImpl method01  
-  ServiceImpl method02 
+  ServiceImpl method02   
+**可以根据getMethods()方法的index看到，增加的方法是以压栈的方式，进入Methods**
