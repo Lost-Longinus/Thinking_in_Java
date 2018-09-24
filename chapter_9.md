@@ -1,6 +1,6 @@
 ### Chapter 9 - ***Interface***
 * 接口中方法的访问修饰符可以不定义，自动就是且仅是public。  
->策略模式(示例)
+>策略模式
 ```sh 
 import java.util.Arrays;
 public class Strategy_pattern {
