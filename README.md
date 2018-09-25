@@ -7,4 +7,6 @@ Polymorphism 多态
 [Chapter 9](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_09.md)    
 Interface 接口  
 [Chapter 10](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_10.md)   
-Internal class 内部类  
+Internal class 内部类   
+[Chapter 11](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_11.md)   
+Hold Object 持有对象 
