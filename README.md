@@ -10,9 +10,9 @@ Interface 接口
 Internal class 内部类   
 [Chapter 11](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_11.md)   
 Hold Object 持有对象   
-[Chapter 12](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_12.md)   
-Exception 异常 
-[Chapter 13](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_13.md)   
+[Chapter 12](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_12.md)    
+Exception 异常    
+[Chapter 13](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_13.md)    
 String 字符串  
  
 * git命令图解
