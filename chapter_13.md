@@ -72,4 +72,21 @@ matches()：输入字符串全部匹配正则表达式
 find(): 在输入的任意位置定位正则表达式  
 lookingAt(): 输入的第一部分匹配正则表达式  
 * Scanner类  
-***既可以扫描基本类型，还可以使用正则表达式
+***既可以扫描基本类型，还可以使用正则表达式***  
+```sh
+public class App {
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner("12, 34 , 4,45");
+		scanner.useDelimiter("\\s*,\\s*");
+		while(scanner.hasNext()){
+			System.out.println(scanner.nextInt());
+		}
+	}
+}
+//output
+12
+34
+4
+45
+```
