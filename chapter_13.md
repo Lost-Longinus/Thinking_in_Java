@@ -67,4 +67,7 @@ Beans               4       4.25
 切割: split()  
 替换: replaceAll()/replaceFirst()  
 
-
+* Matcher类中的三个操作：  
+matches()：输入字符串全部匹配正则表达式   
+find(): 在输入的任意位置定位正则表达式  
+lookingAt(): 输入的第一部分匹配正则表达式
