@@ -65,4 +65,6 @@ Beans               4       4.25
 * String类中的三个基本操作使用正则：  
 匹配：matches()  
 切割: split()  
-替换: replaceAll()  
+替换: replaceAll()/replaceFirst()  
+
+
