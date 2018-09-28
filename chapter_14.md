@@ -19,6 +19,8 @@ public class GenericClass {
 		//解决方法二：指定范围（Number是Integer父类）
 		Class<? extends Number> intClazz03 = int.class;
 		intClazz03 = double.class;
-	}
+	} 
 }
 ```  
+***反射***  
+ 

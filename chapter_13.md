@@ -71,6 +71,22 @@ Beans               4       4.25
 matches()：输入字符串全部匹配正则表达式   
 find(): 在输入的任意位置定位正则表达式  
 lookingAt(): 输入的第一部分匹配正则表达式  
+```sh 
+public class Findding {
+	public static void main(String[] args) {
+		Matcher matcher = Pattern.compile("\\w+")
+				.matcher("Evening is full of linnet's wings");
+		while (matcher.find()){
+			System.out.print(matcher.group()+" ");
+		}
+		System.out.println();
+		System.out.println(matcher.replaceAll("match"));
+	}
+}
+//output
+Evening is full of linnet s wings 
+match match match match match'match match 
+```  
 * Scanner类  
 ***既可以扫描基本类型，还可以使用正则表达式***  
 ```sh
