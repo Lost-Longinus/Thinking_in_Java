@@ -1,5 +1,5 @@
 # Chapter 15 - Class
-* 类型参数--用<>括住，放在***类名后面
+* 类型参数--用<>括住，放在类名后面
 ```sh 
 public class App<T> {
 	private T a;
@@ -20,4 +20,17 @@ public class App<T> {
 //output
 圆周率： 3.1415926
 ```
-
+* 元组数据  
+```sh 
+public class TwoTuple<A,B>{
+	public final A first;
+	public final B second;
+	public TwoTuple(A a,B b){
+		first = a;
+		second = b;
+	}
+	public String toString(){
+		return "("+first+","+second+")";
+	}
+}
+```
