@@ -1,4 +1,4 @@
-# Chapter 15 - Class
+# Chapter 15 - ***Generics***
 * 类型参数--用<>括住，放在类名后面
 ```sh 
 public class App<T> {
