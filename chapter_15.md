@@ -75,4 +75,38 @@ public <T> void method(T t){};
 ```
 * 使用该方法时，不必指明参数类型，编译器通过**类型参数推断**，找到具体类型，
 使用时和普通方法无异。  
-
+```sh 
+public class GenericTest {
+    public static void main(String[] args) {
+        Box<String> name = new Box<String>("corn");
+        Box<Integer> age = new Box<Integer>(712);
+        System.out.println("name class:" + name.getClass());      
+        System.out.println("age class:" + age.getClass());        
+        System.out.println(name.getClass() == age.getClass());    
+    }
+}
+class Box<T> {
+    private T data;
+    public Box() {
+    }
+    public Box(T data) {
+        this.data = data;
+    }
+    public T getData() {
+        return data;
+    }
+}
+//output
+name class:class Box
+age class:class Box
+true
+```  
+* Java中的泛型其只是作用于代码编译阶段，在编译过程中，对于正确检验泛型结果后，  
+会将泛型的相关信息擦出，也就是说，成功编译过后的class文件中是不包含任何泛型信息的。  
+泛型信息不会进入到运行时阶段。  
+* 类型通配符   
+类型通配符上限<? extends T>  
+类型通配符下限<? super T>  
+* 泛型--擦除  
+Java在编译时会校验泛型参数，生成时会以泛型实参的上限类型替代真实的泛型实参。   
+但，Java虚拟机会以签名的形式保留这些泛型实参类型(包括类的定义、泛型方法、泛型字段都会保留参数的签名信息)   
