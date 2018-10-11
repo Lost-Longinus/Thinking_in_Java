@@ -20,7 +20,7 @@ Class 类型信息
 Generics 泛型  
 [Chapter 16](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_16.md)      
 Array 数组  
-[Chapter 17](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_17.md)      
+[Chapter 17](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_17)      
 Deep study of containers 容器深入研究   
 [Chapter 18](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_18.md)      
 Java I/O System 输入/输出  
