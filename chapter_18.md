@@ -51,4 +51,66 @@ InputStreamReader/OutputStreamWriter实现了字节向字符的转换。
 32 : 		}
 ···
 ```  
+***读取文件内容时，换行符会被去掉，所以要恢复，须加上"\n"***   
+ * 进程控制   
+ ```sh 
+ import java.io.BufferedReader;
+ import java.io.IOException;
+ import java.io.InputStreamReader;
+ 
+ /**
+  * Created by Pengfei Jin on 2018/10/13.
+  */
+ public class ProcessControl {
+ 	public static void main(String[] args) {
+ 		String cmd = "javap D:\\Demo2.class";
+ 		OSExecute.command(cmd);
+ 	}
+ }
+ class OSExecute{
+ 	public static void command(String cmd){
+ 		boolean err = false;
+ 		try {
+ 			Process process = new ProcessBuilder(cmd.split(" ")).start();
+ 			BufferedReader results = new BufferedReader(
+ 					new InputStreamReader(
+ 							process.getInputStream()
+ 					)
+ 			);
+ 			String s;
+ 			while ((s = results.readLine()) != null) {
+ 				System.out.println(s);
+ 			}
+ 			BufferedReader errors = new BufferedReader(
+ 					new InputStreamReader(
+ 							process.getErrorStream()
+ 					)
+ 			);
+ 			while ((s = results.readLine()) != null) {
+ 				System.out.println(s);
+ 				err = true;
+ 			}
+ 		} catch (IOException e) {
+ 			if (!cmd.startsWith("CMD /C")){
+ 			    command("CMD /C" + cmd);
+ 			}else{
+ 				throw new RuntimeException(e);
+ 			}
+ 			if (err){
+ 			    throw new OSExecuteException("ERRORs executing" + cmd);
+ 			}
+ 		}
+ 	}
+ }
+ class OSExecuteException extends RuntimeException{
+ 	public OSExecuteException(String why){super(why);}
+ }
+ //output
+ Compiled from "Demo2.java"
+ public class cn.itcast.input.Demo2 {
+   public cn.itcast.input.Demo2();
+   public static void main(java.lang.String[]) throws java.io.IOException;
+ }
+ ```
+ 
 
