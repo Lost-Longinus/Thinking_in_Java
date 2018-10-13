@@ -176,3 +176,104 @@ public static void codeError() throws UnsupportedEncodingException {
 //output(decode:ISO8859-1)
 ��bN��f/S�gev�h7[PT�
 ```
+* XML序列化和反序列化对象  
+* 序列化对象  
+```sh 
+import nu.xom.Document;
+import nu.xom.Element;
+import nu.xom.Serializer;
+
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Created by Pengfei Jin on 2018/10/13.
+ */
+public class XMLSequence {
+	public static void main(String[] args) throws Exception {
+		List<Person> people = Arrays.asList(new Person("刘","玄德"),
+				new Person("关","云长"),
+				new Person("张","翼德"));
+		System.out.println(people);
+		Element root = new Element("people");
+		for(Person p : people){
+			root.appendChild(p.getXML());
+		}
+		Document doc = new Document(root);
+		Person.format(System.out , doc);
+		Person.format(new BufferedOutputStream(new FileOutputStream("D:\\people.xml")) , doc);
+	}
+}
+class Person{
+	private String first, last;
+	public Person(String first, String last) {
+		this.first = first;
+		this.last = last;
+	}
+	public Element getXML(){
+		Element person = new Element("person");
+		Element firstName = new Element("first");
+		firstName.appendChild(first);
+		Element lastName = new Element("last");
+		firstName.appendChild(last);
+		person.appendChild(firstName);
+		person.appendChild(lastName);
+		return person;
+	}
+	public Person(Element person) {
+		first = person.getFirstChildElement("first").getValue();
+		last = person.getFirstChildElement("last").getValue();
+	}
+	@Override
+	public String toString() {
+		return first+" "+last;
+	}
+	public static void format(OutputStream os, Document doc) throws Exception {
+		Serializer serializer = new Serializer(os , "utf-8");
+		serializer.setIndent(4);
+		serializer.setMaxLength(60);
+		serializer.write(doc);
+		serializer.flush();
+	}
+}
+//output
+[刘 玄德, 关 云长, 张 翼德]
+<?xml version="1.0" encoding="utf-8"?>
+<people>
+    <person>
+        <first>刘</first>
+        <last>玄德</last>
+    </person>
+    <person>
+        <first>关</first>
+        <last>云长</last>
+    </person>
+    <person>
+        <first>张</first>
+        <last>翼德</last>
+    </person>
+</people>
+```
+* 反序列化对象（使用上述序列化实例代码）  
+```sh 
+class People extends ArrayList<Person>{
+	public People(String filename) throws Exception {
+		Document doc = new Builder().build(filename);
+		Elements elements = doc.getRootElement().getChildElements();
+		for (int i = 0; i < elements.size(); i++) {
+			add(new Person(elements.get(i)));
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		People p = new People("people.xml");
+		System.out.println(p);
+	}
+}
+//output
+[刘 玄德, 关 云长, 张 翼德]
+```
