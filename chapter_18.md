@@ -144,7 +144,7 @@ public class DynamicProxy {
 				new InvocationHandler() {
 ···
 ```
-* 视图缓存器--ByteBuffer
+* 视图缓存器--基于ByteBuffer
 ```sh 
 public static void viewBuffer(){
     ByteBuffer bb = ByteBuffer.wrap(new byte[]{0,0,0,0,0,0,0,'a'});
@@ -162,5 +162,17 @@ public static void viewBuffer(){
 1 -> 1627389952
 ```
 ![bytebuffer](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539429192745&di=c3c7eb7fd9d7502fe2b7026c8c6d29fd&imgtype=0&src=http%3A%2F%2Faliyunzixunbucket.oss-cn-beijing.aliyuncs.com%2Fjpg%2F7a79c310c18638545aeb775159735d48.jpg%3Fx-oss-process%3Dimage%2Fresize%2Cp_100%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Cimage_eXVuY2VzaGk%3D%2Ct_100)  
-
-
+* 所有的xxxBuffer均是ByteBuffer上的一个视图而已，  
+总是以操作ByteBuffer为目标，因为它直接与Channel交互。
+* 基于ByteBuffer编码与解码  
+```sh 
+public static void codeError() throws UnsupportedEncodingException {
+    ByteBuffer bb = ByteBuffer.wrap("我们还是原来的样子吗！".getBytes("utf-8"));
+    CharBuffer cb = bb.asCharBuffer();
+    System.out.println(Charset.forName("utf-8").decode(bb));//forName("ISO8859-1")
+}
+//output(decode:utf-8)
+我们还是原来的样子吗！
+//output(decode:ISO8859-1)
+��bN��f/S�gev�h7[PT�
+```
