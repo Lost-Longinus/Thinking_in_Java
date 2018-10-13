@@ -89,7 +89,7 @@ InputStreamReader/OutputStreamWriter实现了字节向字符的转换。
  			);
  			while ((s = results.readLine()) != null) {
  				System.out.println(s);
- 				err = true;
+ 				err = true;  
  			}
  		} catch (IOException e) {
  			if (!cmd.startsWith("CMD /C")){
@@ -114,6 +114,8 @@ InputStreamReader/OutputStreamWriter实现了字节向字符的转换。
  }
  ```
  * 新I/O  
+ 接近于操作系统的执行方式：通道(FileChannel)和缓冲器(ByteBuffer)
+ ![NEWIO](https://images0.cnblogs.com/blog2015/707997/201503/091339416439067.png)
 ```sh 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -142,4 +144,23 @@ public class DynamicProxy {
 				new InvocationHandler() {
 ···
 ```
+* 视图缓存器--ByteBuffer
+```sh 
+public static void viewBuffer(){
+    ByteBuffer bb = ByteBuffer.wrap(new byte[]{0,0,0,0,0,0,0,'a'});
+    bb.order(ByteOrder.BIG_ENDIAN);//ByteOrder.LITTLE_ENDIAN
+    IntBuffer ib = bb.asIntBuffer();
+    while (ib.hasRemaining()) {
+        System.out.println(ib.position()+" -> "+ib.get());
+    }
+}
+//output(BIG_ENDIAN)
+0 -> 0
+1 -> 97
+//output(LITTLE_ENDIAN)
+0 -> 0
+1 -> 1627389952
+```
+![bytebuffer](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539429192745&di=c3c7eb7fd9d7502fe2b7026c8c6d29fd&imgtype=0&src=http%3A%2F%2Faliyunzixunbucket.oss-cn-beijing.aliyuncs.com%2Fjpg%2F7a79c310c18638545aeb775159735d48.jpg%3Fx-oss-process%3Dimage%2Fresize%2Cp_100%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Cimage_eXVuY2VzaGk%3D%2Ct_100)  
+
 
