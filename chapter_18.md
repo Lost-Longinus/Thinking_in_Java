@@ -63,6 +63,7 @@ InputStreamReader/OutputStreamWriter实现了字节向字符的转换。
   */
  public class ProcessControl {
  	public static void main(String[] args) {
+ 	    //注意！！直接拷贝文件路径到IDEA，路径名前带上的“\u202A”会使路径无效，须删除
  		String cmd = "javap D:\\Demo2.class";
  		OSExecute.command(cmd);
  	}
@@ -112,5 +113,33 @@ InputStreamReader/OutputStreamWriter实现了字节向字符的转换。
    public static void main(java.lang.String[]) throws java.io.IOException;
  }
  ```
- 
+ * 新I/O  
+```sh 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+
+/**
+ * Created by Pengfei Jin on 2018/10/13.
+ */
+public class NewIO {
+	public static void main(String[] args) throws IOException {
+		FileChannel
+				in = new FileInputStream("D:\\Github\\CodeSamples\\src\\DynamicProxy.java").getChannel(),
+				out = new FileOutputStream("D:\\test.txt").getChannel();
+		in.transferTo(0,in.size(),out);
+		System.out.println(BufferedInputFile.read("D:\\test.txt"));
+	}
+}
+//output
+···
+public class DynamicProxy {
+	public static void main(String[] args) {
+		SomeMethods proxy = (SomeMethods) Proxy.newProxyInstance(
+				SomeMethods.class.getClassLoader(),
+				new Class[]{SomeMethods.class},
+				new InvocationHandler() {
+···
+```
 
