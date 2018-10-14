@@ -6,8 +6,10 @@
 
 > 四个元注解  
 >>  @Target  @Retention  @Document  @Inherited        
-*  @Target定义注解作用域
+*  @Target定义注解作用域   
+
 ![meta](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539539064113&di=51ce4ef63a899789d344e147d1da17c7&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1491412921%2C531024205%26fm%3D214%26gp%3D0.jpg)
+
 ```sh 
 package java.lang.annotation;
 
