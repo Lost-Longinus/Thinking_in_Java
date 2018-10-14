@@ -40,6 +40,7 @@ the traffic light is Yellow
 the traffic light is Red
 the traffic light is Green
 ```
+* 如果在enum中添加方法，须在enum实例序列最后添加分号，且任何方法和属性都须置于实例之后。
 * 邮局如何处理一封邮件直至被判为死信---***职责链设计模式***  
 ```sh 
 import java.util.Iterator;
