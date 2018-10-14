@@ -59,3 +59,5 @@ public enum RetentionPolicy {
 public @interface MyAnnotation1 {
 }
 ```
+* 如果一个注解中有一个属性如value，且你只想设置该属性(即其他属性都采用默认值   
+或者你只有这一个属性)，那么可以省略掉“value=”部分。
