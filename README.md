@@ -24,5 +24,7 @@ Array 数组
 Deep study of containers 容器深入研究   
 [Chapter 18](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_18.md)      
 Java I/O System 输入/输出  
+[Chapter 19](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_19.md)      
+Enum 枚举类型
 * git命令图解
 ![git](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537891097700&di=1faa0fae5212ab7301ea7551153c61b3&imgtype=0&src=http%3A%2F%2Fwww.uml.org.cn%2Fpzgl%2Fimages%2F2017041301.png)
