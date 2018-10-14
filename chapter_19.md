@@ -201,3 +201,59 @@ Mail 5, General Delivery: NO1, Address Scannability: YES3, Address Readability: 
 Mail 5 is a dead letter!!
 ***************************************
 ```
+* 使用enum的多路分发  
+```sh 
+/**
+ * Created by Pengfei Jin on 2018/10/14.
+ */
+public enum RoShamBo implements Competitor<RoShamBo>{
+	PAPER(Outcome.DRAW, Outcome.LOSE, Outcome.WIN),
+	SCISSORS(Outcome.WIN, Outcome.DRAW, Outcome.LOSE),
+	ROCK(Outcome.LOSE, Outcome.WIN, Outcome.DRAW);
+	private Outcome rPAPER, rSCISSORS, rROCK;
+	RoShamBo(Outcome paper, Outcome scissors, Outcome rock) {
+		this.rPAPER = paper;
+		this.rSCISSORS = scissors;
+		this.rROCK = rock;
+	}
+	@Override
+	public Outcome compete(RoShamBo competitor) {
+		switch (competitor){
+			default:
+			case PAPER: return rPAPER;
+			case SCISSORS: return rSCISSORS;
+			case ROCK: return rROCK;
+		}
+	}
+	public static void main(String[] args) {
+		RSB.play(RoShamBo.class,10);
+	}
+}
+interface Competitor<T extends Competitor<T>>{
+	Outcome compete(T competitor);
+}
+class RSB{
+	public static <T extends Competitor<T>> void match(T a, T b){
+		System.out.println(a + " vs. " + b + " : " + a.compete(b));
+	}
+	public static <T extends Enum<T>&Competitor<T>> void play(Class<T> rsbClass, int size){
+		for (int i = 0; i < size; i++) {
+			match(Enums.random(rsbClass),Enums.random(rsbClass));
+		}
+	}
+}
+enum Outcome{
+	WIN, LOSE, DRAW
+}
+//output 
+PAPER vs. ROCK : WIN
+ROCK vs. PAPER : LOSE
+PAPER vs. SCISSORS : LOSE
+PAPER vs. SCISSORS : LOSE
+SCISSORS vs. SCISSORS : DRAW
+ROCK vs. ROCK : DRAW
+ROCK vs. SCISSORS : WIN
+SCISSORS vs. SCISSORS : DRAW
+SCISSORS vs. PAPER : WIN
+PAPER vs. ROCK : WIN
+```
