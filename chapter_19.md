@@ -206,6 +206,7 @@ Mail 5 is a dead letter!!
 /**
  * Created by Pengfei Jin on 2018/10/14.
  */
+ //import static Outcom.* 使用静态导入方法，编译报错，找不到Outcom
 public enum RoShamBo implements Competitor<RoShamBo>{
 	PAPER(Outcome.DRAW, Outcome.LOSE, Outcome.WIN),
 	SCISSORS(Outcome.WIN, Outcome.DRAW, Outcome.LOSE),
