@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2ec9db9f-e6d6-4bb0-b5d1-970a8bae2000" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter_19.md" beforeDir="false" afterPath="$PROJECT_DIR$/chapter_19.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,8 +66,8 @@
         <entry file="file://$PROJECT_DIR$/chapter_19.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="700">
-                <caret line="258" column="3" selection-start-line="258" selection-start-column="3" selection-end-line="258" selection-end-column="3" />
+              <first_editor relative-caret-position="206">
+                <caret line="218" column="13" lean-forward="true" selection-start-line="218" selection-start-column="13" selection-end-line="218" selection-end-column="13" />
               </first_editor>
               <second_editor />
             </state>
@@ -407,8 +406,8 @@
     <entry file="file://$PROJECT_DIR$/chapter_19.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="700">
-            <caret line="258" column="3" selection-start-line="258" selection-start-column="3" selection-end-line="258" selection-end-column="3" />
+          <first_editor relative-caret-position="206">
+            <caret line="218" column="13" lean-forward="true" selection-start-line="218" selection-start-column="13" selection-end-line="218" selection-end-column="13" />
           </first_editor>
           <second_editor />
         </state>
