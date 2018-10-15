@@ -28,5 +28,7 @@ Java I/O System 输入/输出
 Enum 枚举类型
 [Chapter 20](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_20.md)      
 Annotation 注解
+[Chapter 21](https://github.com/Lost-Longinus/Thinking_in_Java/blob/master/chapter_21.md)      
+Concurrent 并发
 * git命令图解
 ![git](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537891097700&di=1faa0fae5212ab7301ea7551153c61b3&imgtype=0&src=http%3A%2F%2Fwww.uml.org.cn%2Fpzgl%2Fimages%2F2017041301.png)
