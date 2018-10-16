@@ -29,18 +29,47 @@ class LiftOff implements Runnable{
 			System.out.println(status());
 			Thread.yield();
 		}
+		System.out.println()
 	}
 }
 //output
 Waiting for Liftoff...
-#0(9)
-#0(8)
-#0(7)
-#0(6)
-#0(5)
-#0(4)
-#0(3)
-#0(2)
-#0(1)
-#0(Lift off!!)
+#0(9)  #0(8)  #0(7)  #0(6)  #0(5)  #0(4)  #0(3)  #0(2)  #0(1)  #0(Lift off!!) 
 ```
+* 任何线程都可以启动另一个线程。  
+* main()方法也是一个线程，它无法管理另一个线程。  
+管理线程须用执行器(Executor)，它暴露了执行的单一类ExecutorService。
+* 只创建一个线程
+```sh 
+public static void main(String[] args) {
+    ExecutorService executorService = Executors.newSingleThreadExecutor();//--只创建一个线程
+    for (int i = 0; i < 2; i++) {
+        executorService.execute(new LiftOff());
+    }
+    executorService.shutdown();
+}
+//output
+#0(9)  #0(8)  #0(7)  #0(6)  #0(5)  #0(4)  #0(3)  #0(2)  #0(1)  #0(Lift off!!)  
+#1(9)  #1(8)  #1(7)  #1(6)  #1(5)  #1(4)  #1(3)  #1(2)  #1(1)  #1(Lift off!!)  
+```
+* 创建一个缓冲线程池
+```sh 
+public static void main(String[] args) {
+    ExecutorService executorService = Executors.newCachedThreadPool();//--创建一个缓冲线程池
+    for (int i = 0; i < 2; i++) {
+        executorService.execute(new LiftOff());
+    }
+    executorService.shutdown();
+}
+//output
+#1(9)  #0(9)  #1(8)  #0(8)  #1(7)  #0(7)  #1(6)  #0(6)  #1(5)  #0(5)  #1(4)  #0(4)  #1(3)  
+#0(3)  #0(2)  #1(2)  #0(1)  #1(1)  #0(Lift off!!)  #1(Lift off!!)  
+
+
+```
+* 如果希望任务产生返回值，应该实现Callable，并调用其call()方法。
+* 休眠sleep()方法，将使任务停止给定时间后再执行。
+* 优先级   
+优先级较低的线程执行频率较低，所以，调度器倾向于让优先级最高的线程先执行。
+* 让步   
+yield方法表示让步，即给调度机制暗示：这项任务已经做得差不多了，可以让别的线程使用CPU。  
