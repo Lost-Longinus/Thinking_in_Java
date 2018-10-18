@@ -79,4 +79,53 @@ yield方法表示让步，即给调度机制暗示：这项任务已经做得差
 2）禁止进行指令重排序。  
  * 解决共享资源竞争  
  1）synchronized关键字标记方法或代码块，其它访问将被阻塞。   
- 2）显示互斥机制--Lock对象，创建，锁定，释放。
+ 注意同步代码块需要指定锁，常使用当前对象this。   
+ 而下面是一个使用其它对象作为同步锁的例子   
+ ```sh 
+ /**
+  * Created by Pengfei Jin on 2018/10/18.
+  */
+ public class SyncObject {
+ 	public static void main(String[] args) {
+ 		final DualSynch ds = new DualSynch();
+ 		new Thread(){
+ 			public void run(){
+ 				ds.f();
+ 			}
+ 		}.start();
+ 		ds.g();
+ 	}
+ }
+ class DualSynch{
+ 	private Object syncObject = new Object();
+ 	public synchronized void f(){
+ 		for (int i = 0; i < 5; i++) {
+ 			System.out.println("f()");
+ 			Thread.yield();
+ 		}
+ 	}
+ 	public void g(){
+ 		synchronized (syncObject){
+ 			for (int i = 0; i < 5; i++) {
+ 				System.out.println("g()");
+ 				Thread.yield();
+ 			}
+ 		}
+ 	}
+ }
+ //output
+ g()
+ g()
+ g()
+ f()
+ g()
+ f()
+ f()
+ g()
+ f()
+ f()
+ ```
+ 2）显示互斥机制--Lock对象，创建，锁定，释放。   
+ 记住在finally块中释放Lock对象，以免忘记。   
+ 3）线程本地存储--ThreadLocal对象     
+ 可以为使用相同变量的每个不同的线程都创建不同的存储。
